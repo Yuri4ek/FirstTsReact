@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import '../styles/home.page.css'
-import reactLogo from '../assets/react.svg'
+import './styles/home.page.css'
+import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 
 export function HomePage() {
