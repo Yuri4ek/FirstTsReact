@@ -1,0 +1,23 @@
+.components {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textBlock {
+    width: 200px;
+    height: 100px;
+    border: 2px solid black;
+    border-radius: 10px;
+    margin: 10px auto;
+
+    line-height: 200%;
+}
+
+.button {
+    width: 150px;
+    height: 50px;
+    border: 1.5px solid black;
+    border-radius: 7.5px;
+}

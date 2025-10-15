@@ -12,7 +12,7 @@ export function HomePage() {
             <div className="text">процессор</div>
         </button>
         <button className="component" onClick={() => navigate("/videocard")}>
-            <div className="text">видеокарту</div>
+            <div className="text">видеокарта</div>
         </button>
         <button className="component" onClick={() => navigate("/PSU")}>
             <div className="text">блок питания</div>
