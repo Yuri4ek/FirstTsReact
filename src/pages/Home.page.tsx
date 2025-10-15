@@ -4,15 +4,27 @@ import './styles/home.page.css'
 
 export function HomePage() {
   const navigate = useNavigate();
-  const handleClick = () => {
-    navigate('/processor');
+  const handleClick = (path: string) => {
+    navigate(path);
   }
   return (
     <>
-    <div>
-      <button className="component" onClick={handleClick}>
-          <div className="text">выбрать процессор</div>
-      </button>
+    <div className="container">
+      <div>
+        <button className="component" onClick={() => handleClick("/processor")}>
+            <div className="text">процессор</div>
+        </button>
+      </div>
+      <div>
+        <button className="component" onClick={() => handleClick("/videocard")}>
+            <div className="text">видеокарту</div>
+        </button>
+      </div>
+      <div>
+        <button className="component" onClick={() => handleClick("/PSU")}>
+            <div className="text">блок питания</div>
+        </button>
+      </div>
     </div>
     </>
   );
