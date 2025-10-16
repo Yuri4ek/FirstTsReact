@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import './styles/processor.page.css'
+import './styles/component.page.css'
 
 export function ProcessorPage() {
     const navigate = useNavigate();
