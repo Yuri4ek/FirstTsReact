@@ -1,28 +1,33 @@
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from "@tanstack/react-query";
+import { getPSUs } from "./api";
+import type { PSU } from './api';
 import './styles/component.page.css'
 
 export function PSUPage() {
     const navigate = useNavigate();
 
-    const videocards = [
-        {name: "Powerman ultimate", powerInWatt: 1000},
-        {name: "Aerocool KSAS", powerInWatt: 10000},
-        {name: "Aerocool Cyclon", powerInWatt: 350},
-        {name: "Gigabyte Extreme", powerInWatt: 1200},
-    ];
+    const { data, isLoading, isError } = useQuery<PSU[]>({
+    queryKey: ["psus"],
+    queryFn: getPSUs,
+    });
+
+    if (isLoading) return <p>Загрузка блоков питания...</p>;
+    if (isError) return <p>Ошибка при загрузке данных.</p>;
+
     return (
         <>
         <div>
-            Эта страница с видеокартами 
+            Эта страница с блоками питания
         </div>
         <button className="button" onClick={() => navigate("/")}>
             Вернуться обратно
         </button>
         <div className="components">
-            {videocards.map(videocard => (
+            {data?.map((psu: PSU) => (
                 <div className="textBlock">
-                    <b>{videocard.name}</b> <br />
-                    мощность: {videocard.powerInWatt} Ватт
+                    <b>{psu.name}</b> <br />
+                    мощность: {psu.powerInWatt} Ватт
                 </div>
             ))}
         </div>
