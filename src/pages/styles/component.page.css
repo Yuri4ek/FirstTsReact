@@ -1,8 +1,18 @@
 .components {
   position: absolute;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  top: 75%;
+  transform: translate(-50%, -75%);
+
+  width: 450px;
+  height: 75%;
+
+  display: flex; /* Включаем Flexbox */
+  flex-wrap: wrap; /* Перенос элементов на следующую строку */
+  justify-content: space-between; /* Распределяем элементы с равными отступами */
+  align-content: flex-start; /* Начинаем выравнивание сверху */
+  overflow-y: auto; /* Добавляем прокрутку, если элементы не помещаются */
+  padding: 10px; /* Внутренний отступ для аккуратного вида */
 }
 
 .textBlock {
@@ -10,7 +20,7 @@
     height: 100px;
     border: 2px solid black;
     border-radius: 10px;
-    margin: 10px auto;
+    margin: 10px;
 
     line-height: 200%;
 }

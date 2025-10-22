@@ -1,16 +1,17 @@
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getProcessors } from '../app/queryClient/api';
+import type { Processor } from '../app/queryClient/api';
 import './styles/component.page.css'
 
 export function ProcessorPage() {
     const navigate = useNavigate();
 
-    const processors = [
-        {name: "intel core i7", cores: 12, architecture: "raptorLake"},
-        {name: "intel core i5", cores: 8, architecture: "raptorLake"},
-        {name: "intel core i3", cores: 4, architecture: "raptorLake"},
-        {name: "ryzen 5 5600", cores: 6, architecture: "zen3"},
-        {name: "ryzen 3 3100", cores: 4, architecture: "zen1+"},
-    ];
+    const { data, isLoading, isError } = useQuery<Processor[]>({
+        queryKey: ["videocards"],
+        queryFn: getProcessors,
+    });
+
     return (
         <>
         <div>
@@ -20,7 +21,8 @@ export function ProcessorPage() {
             Вернуться обратно
         </button>
         <div className="components">
-            {processors.map(processor => (
+            {isLoading ? (<p>Загрузка процессоров...</p>) : isError ? (<p>Ошибка при загрузке данных.</p>) :
+            data?.map(processor => (
                 <div className="textBlock">
                     <b>{processor.name}</b> <br />
                     архитектура: {processor.architecture} <br />

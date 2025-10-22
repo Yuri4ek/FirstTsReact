@@ -1,14 +1,17 @@
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
+import { getVideocards } from '../app/queryClient/api';
+import type { Videocard } from '../app/queryClient/api';
 import './styles/component.page.css'
 
 export function VideocardPage() {
     const navigate = useNavigate();
 
-    const videocards = [
-        {name: "rx 7600", DRAM: 8, architecture: "RDNA"},
-        {name: "gtx 1060", DRAM: 6, architecture: "Ampere"},
-        {name: "gtx 1660 super", DRAM: 6, architecture: "Turing"},
-    ];
+    const { data, isLoading, isError } = useQuery<Videocard[]>({
+        queryKey: ["videocard"],
+        queryFn: getVideocards,
+    });
+
     return (
         <>
         <div>
@@ -18,11 +21,12 @@ export function VideocardPage() {
             Вернуться обратно
         </button>
         <div className="components">
-            {videocards.map(videocard => (
+            {isLoading ? (<p>Загрузка видеокарт...</p>) : isError ? (<p>Ошибка при загрузке данных.</p>) : 
+            data?.map(videocard => (
                 <div className="textBlock">
                     <b>{videocard.name}</b> <br />
                     архитектура: {videocard.architecture} <br />
-                    гигабайт памяти: {videocard.DRAM}
+                    гигабайт памяти: {videocard.VRAM}
                 </div>
             ))}
         </div>

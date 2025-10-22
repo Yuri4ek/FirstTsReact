@@ -8,12 +8,9 @@ export function PSUPage() {
     const navigate = useNavigate();
 
     const { data, isLoading, isError } = useQuery<PSU[]>({
-    queryKey: ["psus"],
-    queryFn: getPSUs,
+        queryKey: ["psus"],
+        queryFn: getPSUs,
     });
-
-    if (isLoading) return <p>Загрузка блоков питания...</p>;
-    if (isError) return <p>Ошибка при загрузке данных.</p>;
 
     return (
         <>
@@ -24,7 +21,8 @@ export function PSUPage() {
             Вернуться обратно
         </button>
         <div className="components">
-            {data?.map((psu: PSU) => (
+            {isLoading ? (<p>Загрузка блоков питания...</p>) : isError ? (<p>Ошибка при загрузке данных.</p>) :
+            data?.map((psu: PSU) => (
                 <div className="textBlock">
                     <b>{psu.name}</b> <br />
                     мощность: {psu.powerInWatt} Ватт
