@@ -1,5 +1,3 @@
-// api.ts
-
 export interface Processor {
   name: string;
   architecture: string;

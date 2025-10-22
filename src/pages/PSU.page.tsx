@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from "@tanstack/react-query";
-import { getPSUs } from "./api";
-import type { PSU } from './api';
+import { getPSUs } from "../app/queryClient/api";
+import type { PSU } from '../app/queryClient/api';
 import './styles/component.page.css'
 
 export function PSUPage() {
