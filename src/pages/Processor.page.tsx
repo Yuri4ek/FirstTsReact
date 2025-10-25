@@ -20,7 +20,7 @@ export function ProcessorPage() {
         <button className="button" onClick={() => navigate("/")}>
             Вернуться обратно
         </button>
-        <div className="components">
+        <section className="components">
             {isLoading ? (<p>Загрузка процессоров...</p>) : isError ? (<p>Ошибка при загрузке данных.</p>) :
             data?.map(processor => (
                 <div className="textBlock">
@@ -29,7 +29,7 @@ export function ProcessorPage() {
                     кол-во ядер: {processor.cores}
                 </div>
             ))}
-        </div>
+        </section>
         </>
     );
 }

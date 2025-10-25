@@ -20,7 +20,7 @@ export function PSUPage() {
         <button className="button" onClick={() => navigate("/")}>
             Вернуться обратно
         </button>
-        <div className="components">
+        <section className="components">
             {isLoading ? (<p>Загрузка блоков питания...</p>) : isError ? (<p>Ошибка при загрузке данных.</p>) :
             data?.map((psu: PSU) => (
                 <div className="textBlock">
@@ -28,7 +28,7 @@ export function PSUPage() {
                     мощность: {psu.powerInWatt} Ватт
                 </div>
             ))}
-        </div>
+        </section>
         </>
     );
 }

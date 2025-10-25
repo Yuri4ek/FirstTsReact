@@ -20,7 +20,7 @@ export function VideocardPage() {
         <button className="button" onClick={() => navigate("/")}>
             Вернуться обратно
         </button>
-        <div className="components">
+        <section className="components">
             {isLoading ? (<p>Загрузка видеокарт...</p>) : isError ? (<p>Ошибка при загрузке данных.</p>) : 
             data?.map(videocard => (
                 <div className="textBlock">
@@ -29,7 +29,7 @@ export function VideocardPage() {
                     гигабайт памяти: {videocard.VRAM}
                 </div>
             ))}
-        </div>
+        </section>
         </>
     );
 }

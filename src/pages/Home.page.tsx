@@ -7,17 +7,15 @@ export function HomePage() {
 
   return (
     <section className="container">
-        <div >
         <button className="component" onClick={() => navigate('/processor')}>
-            <div className="text">процессор</div>
+            <h2>процессор</h2>
         </button>
         <button className="component" onClick={() => navigate("/videocard")}>
-            <div className="text">видеокарта</div>
+            <h2>видеокарта</h2>
         </button>
         <button className="component" onClick={() => navigate("/PSU")}>
-            <div className="text">блок питания</div>
+            <h2>блок питания</h2>
         </button>
-    </div>
     </section>
     
   );
