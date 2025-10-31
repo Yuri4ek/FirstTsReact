@@ -1,9 +1,13 @@
 import { useNavigate } from 'react-router-dom';
-//import { useState } from 'react'
+import { atom, useAtom } from 'jotai';
 import './styles/home.page.css'
 
 export function HomePage() {
   const navigate = useNavigate();
+
+  const countAtom = atom(0);
+  const [count, updateCount] = useAtom(countAtom);
+  console.log(count);
 
   return (
     <section className="container">
@@ -15,6 +19,9 @@ export function HomePage() {
         </button>
         <button className="component" onClick={() => navigate("/PSU")}>
             <h2>блок питания</h2>
+        </button>
+        <button className="component" onClick={() => updateCount(count + 1)}>
+            {count}
         </button>
     </section>
     
